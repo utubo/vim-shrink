@@ -34,6 +34,10 @@ function! s:Restore(d, is_auto) abort
     return
   endif
   unlet w:['shrink_'.a:d]
+  if winnr('$') == 1
+    unlet w:['shrink_org_'.a:d]
+    return
+  endif
   if a:is_auto && s:IsAutoGrow(a:d)
     return
   endif
