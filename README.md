@@ -5,6 +5,11 @@ Shrink and restore the window
 
 ![vim-shrink](https://user-images.githubusercontent.com/6848636/132008146-1b894282-96ed-404f-9e51-a7509537e040.gif)
 
+## Install
+```vim
+call dein#add('utubo/vim-shrink')
+```
+
 ## Settings
 ### Example
 ```vim
