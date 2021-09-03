@@ -4,7 +4,7 @@ function! s:IsAutoGrow(d) abort
 endfunction
 
 function! s:IsShrink(d, win = 0) abort
-  return getwinvar(win, 'shrink_'.a:d, 0)
+  return getwinvar(a:win, 'shrink_'.a:d, 0)
 endfunction
 
 " Shrink
