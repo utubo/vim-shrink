@@ -1,6 +1,13 @@
 " Common
 function! s:IsAutoGrow(d) abort
-  return winnr('$') == 2 && s:IsShrink(a:d, 1) + s:IsShrink(a:d, 2) == 1
+  let n = 0
+  if a:d == 'w' && winnr('h') == 1 && winnr('l') == winnr('2l')
+    let n = 1
+  endif
+  if a:d == 'h' && winnr('k') == 1 && winnr('j') == winnr('2j')
+    let n = 1
+  endif
+  return n && s:IsShrink(a:d, 1) + s:IsShrink(a:d, 2) == 1
 endfunction
 
 function! s:IsShrink(d, win = 0) abort
@@ -9,14 +16,17 @@ endfunction
 
 " Shrink
 function! s:Shrink(d, size) abort
-  if winnr('$') < 2
+  if a:d == 'w' && winnr('h') == winnr('l')
+    return
+  endif
+  if a:d == 'h' && winnr('j') == winnr('k')
     return
   endif
   if !exists('shrink_org_'.a:d) || !s:IsShrink(a:d) && !s:IsAutoGrow(a:d)
     let w:['shrink_org_'.a:d] = (a:d == 'w') ? winwidth(0) : winheight(0)
   endif
   let w:['shrink_'.a:d] = 1
-  execute (a:d == 'w' ? 'vertical-resize ' : 'resize ') . a:size
+  execute (a:d == 'w' ? 'vertical resize ' : 'resize ') . a:size
   call s:RegisterEvents()
 endfunction
 
