@@ -13,6 +13,8 @@ call dein#add('utubo/vim-shrink')
 ## Settings
 ### Example
 ```vim
+" ⚠This is the beta version !!
+" I will change this mappings.
 nmap <silent> <C-w><C-s> <Plug>(shrink-height)<C-w>w
 tmap <silent> <C-w><C-s> <Plug>(shrink-height)<C-w>w
 nmap <silent> <C-w><C-h> <Plug>(shrink-width)<C-w>w
@@ -29,6 +31,8 @@ let g:shrink_width = 10
 
 ### API
 ```vim
+" ⚠This is the beta version !!
+" I will delete tehse api.
 call shrink#height(<size>)
 call shrink#width(<size>)
 call shrink#restore_height(<size>)
